@@ -1,0 +1,36 @@
+parameters:
+ solutionPath:
+
+jobs:
+  - job: ContinousIntegrationForJava
+    displayName: CI for Java
+    steps:
+      - checkout: self
+        displayName: Checkout repository
+
+      - task: UseJavaVersion@0
+        inputs:
+          versionSpec: '11'  # Define the desired Java version
+          installationPath: 'Java11'
+          addToPath: true
+
+      - script: 'echo "##vso[task.setvariable variable=JAVA_HOME;]$(Agent.ToolsDirectory)/Java11/x64' # Set JAVA_HOME variable
+        displayName: 'Set JAVA_HOME'
+
+      - script: 'echo "##vso[task.setvariable variable=M2_HOME;]$(Agent.ToolsDirectory)/Java11/x64/bin"' # Set M2_HOME variable
+        displayName: 'Set M2_HOME'
+
+      - script: 'echo "##vso[task.prependpath]$(Agent.ToolsDirectory)/Java11/x64/bin"' # Add Java to PATH
+        displayName: 'Add Java to PATH'
+
+      - script: 'echo "##vso[task.prependpath]$(Agent.ToolsDirectory)/maven/apache-maven-3.8.4/bin"' # Add Maven to PATH
+        displayName: 'Add Maven to PATH'
+
+      - checkout: self
+
+      - script: 'mvn clean package'  # Replace with your Maven build command
+        displayName: 'Build with Maven'
+
+      - publish: $(System.DefaultWorkingDirectory)/target
+        artifact: 'publishFiles'
+        displayName: 'Publish Artifact'
