@@ -36,44 +36,44 @@ stages:
         parameters:
           solutionPath: $(solutionPath)
 
-  // - stage: publishDotNetCoreApp
-  //   displayName: CI for .NET Core Application
-  //   dependsOn:
-  //     - checkParameters
-  //   condition: and(succeeded(), eq(variables['language'], 'dotnetcore'))  
-  //   jobs:
-  //     - template: ../templates/ci-dotnetcore.yaml
-  //       parameters:
-  //         solutionPath: $(solutionPath)
+  #  - stage: publishDotNetCoreApp
+  #    displayName: CI for .NET Core Application
+  #    dependsOn:
+  #      - checkParameters
+  #    condition: and(succeeded(), eq(variables['language'], 'dotnetcore'))  
+  #    jobs:
+  #      - template: ../templates/ci-dotnetcore.yaml
+  #        parameters:
+  #          solutionPath: $(solutionPath)
 
-  // - stage: publishDotNetMVCApp
-  //   displayName: CI for .NET MVC Application
-  //   pool:
-  //     vmImage: 'windows-latest'
-  //   dependsOn:
-  //     - checkParameters
-  //   condition: and(succeeded(), eq(variables['language'], 'dotnetmvc'))  
-  //   jobs:
-  //     - template: ../templates/ci-dotnetmvc.yaml
-  //       parameters:
-  //         solutionPath: $(solutionPath)
+  #  - stage: publishDotNetMVCApp
+  #    displayName: CI for .NET MVC Application
+  #    pool:
+  #      vmImage: 'windows-latest'
+  #    dependsOn:
+  #      - checkParameters
+  #    condition: and(succeeded(), eq(variables['language'], 'dotnetmvc'))  
+  #    jobs:
+  #      - template: ../templates/ci-dotnetmvc.yaml
+  #        parameters:
+  #          solutionPath: $(solutionPath)
 
-  // - stage: publishPythonApp
-  //   displayName: CI for Python Application
-  //   dependsOn:
-  //     - checkParameters
-  //   condition: and(succeeded(), eq(variables['language'], 'python'))  
-  //   jobs:
-  //     - template: ../templates/ci-python.yaml
-  //       parameters:
-  //         solutionPath: $(solutionPath)
+  #  - stage: publishPythonApp
+  #    displayName: CI for Python Application
+  #    dependsOn:
+  #      - checkParameters
+  #    condition: and(succeeded(), eq(variables['language'], 'python'))  
+  #    jobs:
+  #      - template: ../templates/ci-python.yaml
+  #        parameters:
+  #          solutionPath: $(solutionPath)
 
-  // - stage: publishNodeJs
-  //   displayName: CI for NodeJs
-  //   dependsOn:
-  //     - checkParameters
-  //   condition: and(succeeded(), eq(variables['language'], 'nodejs'))  
-  //   jobs:
-  //     - template: ../templates/ci-nodejs.yaml
-  //       parameters:
-  //         solutionPath: $(solutionPath)
+  #  - stage: publishNodeJs
+  #    displayName: CI for NodeJs
+  #    dependsOn:
+  #      - checkParameters
+  #    condition: and(succeeded(), eq(variables['language'], 'nodejs'))  
+  #    jobs:
+  #      - template: ../templates/ci-nodejs.yaml
+  #        parameters:
+  #          solutionPath: $(solutionPath)
